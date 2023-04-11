@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#grid-container {
+  display: flex;
+
+  width: 100%;
+  height: 100svh;
+
+  #editor-container {
+    width: 50%;
+    height: 100%;
+
+    background-color: lightskyblue;
+  }
+
+  #preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    width: 50%;
+    height: 100%;
+
+    background-color: lightpink;
+    overflow-y: auto;
+
+    #preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+
+      width: 100%;
+    }
+
+    #add-tool {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      margin-top: 64px;
+
+      #select-section {
+        position: absolute;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+
+        top: -64px;
+        padding: 8px 12px;
+
+        width: max-content;
+        height: 36px;
+
+        border: 2px solid black;
+        border-radius: 4px;
+      }
+    }
+
+    .button {
+      height: 24px;
+
+      padding: 4px;
+
+      border: 2px solid black;
+      border-radius: 4px;
+
+      cursor: pointer;
+      transition: scale 300ms ease-in-out;
+
+      &:active {
+        scale: .98;
+      }
+
+      &:not(:active):hover {
+        scale: 1.02;
+      }
+    }
+  }
+}
