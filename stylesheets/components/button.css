@@ -1,0 +1,16 @@
+.button {
+  height: 24px;
+  padding: 4px;
+  border: 2px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: scale 300ms ease-in-out;
+}
+.button:active {
+  scale: 0.98;
+}
+.button:not(:active):hover {
+  scale: 1.02;
+}
+
+/*# sourceMappingURL=button.css.map */

@@ -1,0 +1,19 @@
+.button {
+  height: 24px;
+
+  padding: 4px;
+
+  border: 2px solid black;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: scale 300ms ease-in-out;
+
+  &:active {
+    scale: .98;
+  }
+
+  &:not(:active):hover {
+    scale: 1.02;
+  }
+}
