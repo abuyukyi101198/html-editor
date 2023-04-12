@@ -1,0 +1,25 @@
+.controls {
+  display: flex;
+  align-items: center;
+}
+.controls .control {
+  visibility: hidden;
+  height: 20px;
+  padding: 4px;
+  fill: #e0e0e0;
+  cursor: pointer;
+}
+.controls .control:hover {
+  fill: #d3d3d3;
+}
+.controls .control:active {
+  fill: #bbbbbb;
+}
+.controls .drag {
+  height: 24px;
+  margin-left: 8px;
+  fill: #000000;
+  cursor: move;
+}
+
+/*# sourceMappingURL=controls.css.map */
