@@ -13,21 +13,34 @@
         <div id="editor-container"></div>
         <div id="preview-container">
             <div id="preview"></div>
-            <div id="add-tool">
-                <div id="select-section">
-                    <svg id="add-text" class="button" viewBox="0 0 24 24">
-                        <path xmlns="http://www.w3.org/2000/svg"
-                              d="M20 4H4a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V6h6v13H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2V6h6v2a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"/>
-                    </svg>
-                    <svg id="add-image" class="button" viewBox="0 0 24 24">
+            <div id="select-section">
+                <svg id="add-header" class="button" viewBox="0 0 24 24">
+                    <path xmlns="http://www.w3.org/2000/svg" d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7h14zM5 9V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3z"/>
+                </svg>
+                <svg id="add-text" class="button" viewBox="0 0 24 24">
+                    <path xmlns="http://www.w3.org/2000/svg"
+                          d="M20 4H4a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V6h6v13H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2V6h6v2a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"/>
+                </svg>
+                <svg id="add-text-image" class="button" viewBox="0 0 24 24" stroke-width=".25" stroke="black">
+                    <path xmlns="http://www.w3.org/2000/svg" transform="scale(0.7) translate(-1, 0)"
+                          d="M20 4H4a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V6h6v13H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2V6h6v2a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"/>
+                    <g transform="scale(0.75) translate(10, 9)">
                         <path xmlns="http://www.w3.org/2000/svg"
                               d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
                         <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
-                    </svg>
-                </div>
-                <svg id="add-section" class="button" data-state="add" viewBox="0 0 24 24">
+                    </g>
+                </svg>
+                <svg id="add-image" class="button" viewBox="0 0 24 24">
                     <path xmlns="http://www.w3.org/2000/svg"
-                          d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2z"/>
+                          d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
+                    <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
+                </svg>
+                <svg id="add-footer" class="button" viewBox="0 0 24 24">
+                    <g transform="rotate(180, 12, 12)">
+                        <path xmlns="http://www.w3.org/2000/svg" d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm-6 3a1 1 0 1 1-1 1 1 1 0 0 1 1-1zM8 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1zm11 12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7h14z"/>
+                        <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="7.03" r="1"/>
+                        <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="7.03" r="1"/>
+                    </g>
                 </svg>
             </div>
         </div>
