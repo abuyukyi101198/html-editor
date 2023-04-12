@@ -38,22 +38,12 @@ body {
       width: 100%;
     }
 
-    #add-tool {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      margin-top: 64px;
-
-      #select-section {
-        position: absolute;
-        display: none;
+    #select-section {
+        display: flex;
         align-items: center;
         justify-content: center;
         gap: 18px;
 
-        top: -64px;
         padding: 8px 12px;
 
         width: max-content;
@@ -82,6 +72,5 @@ body {
       &:not(:active):hover {
         scale: 1.02;
       }
-    }
   }
 }

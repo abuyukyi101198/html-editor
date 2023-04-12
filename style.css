@@ -31,27 +31,18 @@ body {
   gap: 12px;
   width: 100%;
 }
-#grid-container #preview-container #add-tool {
-  position: relative;
+#grid-container #preview-container #select-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 64px;
-}
-#grid-container #preview-container #add-tool #select-section {
-  position: absolute;
-  display: none;
   align-items: center;
   justify-content: center;
   gap: 18px;
-  top: -64px;
   padding: 8px 12px;
   width: max-content;
   height: 36px;
   border: 2px solid black;
   border-radius: 4px;
 }
-#grid-container #preview-container .button {
+#grid-container .button {
   height: 24px;
   padding: 4px;
   border: 2px solid black;
@@ -59,10 +50,10 @@ body {
   cursor: pointer;
   transition: scale 300ms ease-in-out;
 }
-#grid-container #preview-container .button:active {
+#grid-container .button:active {
   scale: 0.98;
 }
-#grid-container #preview-container .button:not(:active):hover {
+#grid-container .button:not(:active):hover {
   scale: 1.02;
 }
 
