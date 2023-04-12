@@ -28,8 +28,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 2px;
   width: 100%;
+}
+#grid-container #preview-container #preview .section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 75px;
+  background-color: white;
+}
+#grid-container #preview-container #preview .section .drag {
+  border: none;
+}
+#grid-container #preview-container #preview .section .delete {
+  background-color: red;
 }
 #grid-container #preview-container #select-section {
   display: flex;
