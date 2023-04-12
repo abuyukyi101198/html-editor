@@ -1,8 +1,21 @@
-const previewList = document.querySelector('#preview');
-const sections = document.querySelectorAll('.section');
-const dragButtons = document.querySelectorAll('.drag');
+(function () {
+    const preview = document.querySelector('#preview');
+    const sections = document.querySelectorAll('.section');
 
-sections.forEach(section => {
+    sections.forEach(section => {
+        setDrag(section);
+    });
+
+    preview.addEventListener('dragover', (e) => {
+        handleDrop(e, preview);
+    });
+
+    preview.addEventListener("dragenter", e => e.preventDefault());
+})();
+
+function setDrag(section) {
+    const dragButton = section.children[1].children[2];
+
     section.addEventListener('dragstart', () => {
         setTimeout(() => section.classList.add('dragging'), 0);
     });
@@ -12,9 +25,6 @@ sections.forEach(section => {
         section.setAttribute('draggable', 'false');
     });
 
-    const dragButton = section.children[0];
-    const deleteButton = section.children[2];
-
     dragButton.addEventListener('mousedown', () => {
         section.setAttribute('draggable', 'true');
     });
@@ -22,21 +32,17 @@ sections.forEach(section => {
     dragButton.addEventListener('mouseup', () => {
         section.setAttribute('draggable', 'false');
     });
+}
 
-    deleteButton.addEventListener('click', () => {section.remove()});
-});
-
-previewList.addEventListener('dragover', (e) => {
+function handleDrop(e, preview) {
     e.preventDefault();
-    const draggingSection = previewList.querySelector('.dragging');
+    const draggingSection = preview.querySelector('.dragging');
 
-    let siblings = [...previewList.querySelectorAll('.section:not(.dragging)')];
+    let siblings = [...preview.querySelectorAll('.section:not(.dragging)')];
 
     let nextSibling = siblings.find(sibling => {
         return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
     });
 
-    previewList.insertBefore(draggingSection, nextSibling);
-});
-
-previewList.addEventListener("dragenter", e => e.preventDefault());
+    preview.insertBefore(draggingSection, nextSibling);
+}
