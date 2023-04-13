@@ -1,11 +1,32 @@
-.controls {
-  display: flex;
-  align-items: center;
+.delete {
+  visibility: hidden;
+  width: 20px;
+  height: 40px;
+  margin: 4px 36px 4px 0;
+  fill: #e0e0e0;
+  cursor: pointer;
 
-  .control {
-    visibility: hidden;
+  &:hover {
+    fill: #d3d3d3;
+  }
+
+  &:active {
+    fill: #bbbbbb;
+  }
+}
+
+.drag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 4px 0;
+
+  .up, .down {
+    visibility: visible;
     height: 20px;
-    padding: 4px;
+    padding: 0;
+    margin: 0;
     fill: #e0e0e0;
     cursor: pointer;
 
@@ -16,12 +37,5 @@
     &:active {
       fill: #bbbbbb;
     }
-  }
-
-  .drag {
-    height: 24px;
-    margin-right: 8px;
-    fill: #d3d3d3;
-    cursor: move;
   }
 }
