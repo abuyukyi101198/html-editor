@@ -1,33 +1,11 @@
-#adder {
+#add-sections {
+  position: absolute;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: left;
   gap: 12px;
 
-  padding: 8px 12px;
-  margin: 0 auto;
+  padding: 24px 12px;
+  margin-right: 36px;
 
-  width: max-content;
-
-  #add-button {
-    height: 24px;
-    padding: 4px;
-    fill: #e0e0e0;
-    cursor: pointer;
-
-    &:hover {
-      fill: #d3d3d3;
-    }
-
-    &:active {
-      fill: #bbbbbb;
-    }
-  }
-
-  #add-sections {
-    visibility: hidden;
-    display: flex;
-    gap: 4px;
-  }
+  background-color: white;
 }
