@@ -1,0 +1,33 @@
+#adder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 8px 12px;
+  margin: 0 auto;
+
+  width: max-content;
+
+  #add-button {
+    height: 24px;
+    padding: 4px;
+    fill: #e0e0e0;
+    cursor: pointer;
+
+    &:hover {
+      fill: #d3d3d3;
+    }
+
+    &:active {
+      fill: #bbbbbb;
+    }
+  }
+
+  #add-sections {
+    visibility: hidden;
+    display: flex;
+    gap: 4px;
+  }
+}
