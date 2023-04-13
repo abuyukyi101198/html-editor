@@ -14,7 +14,7 @@
 })();
 
 function setDrag(section) {
-    const dragButton = section.children[1].children[2];
+    const dragButton = section.children[0].children[0];
 
     section.addEventListener('dragstart', () => {
         setTimeout(() => section.classList.add('dragging'), 0);

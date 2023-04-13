@@ -2,7 +2,7 @@
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
         section.addEventListener('click', (e) => {
-            if (e.target !== section.children[1].children[0]) {
+            if (e.target !== section.children[0].children[1] && !section.children[1].contains(e.target)) {
                 handleSelect(section);
             }
         });
