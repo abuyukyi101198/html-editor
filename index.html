@@ -8,30 +8,111 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/stylesheets/components/button.css">
-    <link rel="stylesheet" href="/stylesheets/components/controls.css">
-    <link rel="stylesheet" href="/stylesheets/components/add.css">
     <link rel="stylesheet" href="/stylesheets/components/preview.css">
     <link rel="stylesheet" href="/stylesheets/email.css">
+    <link rel="stylesheet" href="/stylesheets/components/quill.css">
+    <link rel="stylesheet" href="/quill/quill.snow.css">
     <link rel="stylesheet" href="style.css">
     
     <script src="/scripts/sections.js" defer></script>
     <script src="/scripts/sectionHandler.js" defer></script>
+    <script src="/quill/quill.min.js" defer></script>
+    <script src="/scripts/editorHandler.js" defer></script>
 </head>
 <body>
     <div id="grid-container">
-        <div id="editor-container"></div>
-        <div id="preview-container">
-            <div id="add-sections">
-                <svg id="header" class="button" viewBox="0 0 24 24">
-                    <path xmlns="http://www.w3.org/2000/svg" d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7h14zM5 9V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3z"/>
-                </svg>
-                <svg id="text" class="button" viewBox="0 0 24 24">
+        <div id="editor-container">
+            <div class="row">
+                <div id="alignment" class="unavailable">
+                    <svg class="placeholder" viewBox="0 0 24 24" stroke-width="0">
+                        <circle xmlns="http://www.w3.org/2000/svg" cx="4" cy="12" r="1"/>
+                        <rect xmlns="http://www.w3.org/2000/svg" x="7" y="11" width="14" height="2" rx=".94" ry=".94"/>
+                        <rect xmlns="http://www.w3.org/2000/svg" x="3" y="16" width="18" height="2" rx=".94" ry=".94"/>
+                        <rect xmlns="http://www.w3.org/2000/svg" x="3" y="6" width="18" height="2" rx=".94" ry=".94"/>
+                    </svg>
+                    <div id="left-alignment">
+                        <svg viewBox="0 0 48 24">
+                            <g xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="17" y1="10" x2="3" y2="10"></line>
+                                <line x1="21" y1="6" x2="3" y2="6"></line>
+                                <line x1="21" y1="14" x2="3" y2="14"></line>
+                                <line x1="17" y1="18" x2="3" y2="18"></line>
+                            </g>
+                            <g stroke-width="0" transform="translate(24)">
+                                <path xmlns="http://www.w3.org/2000/svg"
+                                      d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
+                                <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="center-alignment">
+                        <svg viewBox="0 -2 24 44">
+                            <g xmlns="http://www.w3.org/2000/svg" transform="translate(0, 20)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="10" x2="5" y2="10"></line>
+                                <line x1="21" y1="6" x2="3" y2="6"></line>
+                                <line x1="21" y1="14" x2="3" y2="14"></line>
+                                <line x1="19" y1="18" x2="5" y2="18"></line>
+                            </g>
+                            <g stroke-width="0">
+                                <path xmlns="http://www.w3.org/2000/svg"
+                                      d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
+                                <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="right-alignment">
+                        <svg viewBox="0 0 48 24">
+                            <g stroke-width="0">
+                                <path xmlns="http://www.w3.org/2000/svg"
+                                      d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
+                                <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
+                            </g>
+                            <g xmlns="http://www.w3.org/2000/svg" transform="translate(24)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="17" y1="10" x2="3" y2="10"></line>
+                                <line x1="21" y1="6" x2="3" y2="6"></line>
+                                <line x1="21" y1="14" x2="3" y2="14"></line>
+                                <line x1="17" y1="18" x2="3" y2="18"></line>
+                            </g>
+            
+                        </svg>
+                    </div>
+                </div>
+                <div id="image-drop" class="unavailable">
+                    <svg class="placeholder" viewBox="0 0 24 24" stroke-width="0">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                              d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
+                        <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
+                    </svg>
+                    <svg viewBox="0 0 24 24">
+                        <rect xmlns="http://www.w3.org/2000/svg" x="4" y="4" width="16" height="2" rx="1" ry="1" transform="rotate(180 12 5)"/>
+                        <rect xmlns="http://www.w3.org/2000/svg" x="17" y="5" width="4" height="2" rx="1" ry="1" transform="rotate(90 19 6)"/>
+                        <rect xmlns="http://www.w3.org/2000/svg" x="3" y="5" width="4" height="2" rx="1" ry="1" transform="rotate(90 5 6)"/>
+                        <path xmlns="http://www.w3.org/2000/svg" d="M8 14a1 1 0 0 1-.8-.4 1 1 0 0 1 .2-1.4l4-3a1 1 0 0 1 1.18 0l4 2.82a1 1 0 0 1 .24 1.39 1 1 0 0 1-1.4.24L12 11.24 8.6 13.8a1 1 0 0 1-.6.2z"/>
+                        <path xmlns="http://www.w3.org/2000/svg" d="M12 21a1 1 0 0 1-1-1v-8a1 1 0 0 1 2 0v8a1 1 0 0 1-1 1z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="standalone-container unavailable">
+                <svg class="placeholder" viewBox="0 0 24 24" stroke-width="0">
                     <path xmlns="http://www.w3.org/2000/svg"
                           d="M20 4H4a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V6h6v13H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2V6h6v2a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"/>
                 </svg>
-                <svg id="textimage" class="button" viewBox="0 0 24 24">
+                <div id="snow-container"></div>
+            </div>
+        </div>
+        <div id="preview-container">
+            <div id="add-sections">
+                <svg id="header" class="button" viewBox="0 0 24 24" stroke-width="0">
+                    <path xmlns="http://www.w3.org/2000/svg"
+                          d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7h14zM5 9V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3z"/>
+                </svg>
+                <svg id="text" class="button" viewBox="0 0 24 24" stroke-width="0">
+                    <path xmlns="http://www.w3.org/2000/svg"
+                          d="M20 4H4a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V6h6v13H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2V6h6v2a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"/>
+                </svg>
+                <svg id="textimage" class="button" viewBox="0 0 24 24" stroke-width=".5">
                     <path xmlns="http://www.w3.org/2000/svg" transform="scale(0.7) translate(-1, 0)"
                           d="M20 4H4a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V6h6v13H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2V6h6v2a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"/>
                     <g transform="scale(0.75) translate(10, 9)">
@@ -40,14 +121,15 @@
                         <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
                     </g>
                 </svg>
-                <svg id="image" class="button" viewBox="0 0 24 24">
+                <svg id="image" class="button" viewBox="0 0 24 24" stroke-width="0">
                     <path xmlns="http://www.w3.org/2000/svg"
                           d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
                     <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
                 </svg>
-                <svg id="footer" class="button" viewBox="0 0 24 24">
+                <svg id="footer" class="button" viewBox="0 0 24 24" stroke-width="0">
                     <g transform="rotate(180, 12, 12)">
-                        <path xmlns="http://www.w3.org/2000/svg" d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm-6 3a1 1 0 1 1-1 1 1 1 0 0 1 1-1zM8 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1zm11 12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7h14z"/>
+                        <path xmlns="http://www.w3.org/2000/svg"
+                              d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm-6 3a1 1 0 1 1-1 1 1 1 0 0 1 1-1zM8 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1zm11 12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7h14z"/>
                         <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="7.03" r="1"/>
                         <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="7.03" r="1"/>
                     </g>
