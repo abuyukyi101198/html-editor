@@ -8,11 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/stylesheets/components/preview.css">
     <link rel="stylesheet" href="/stylesheets/email.css">
-    <link rel="stylesheet" href="/stylesheets/components/quill.css">
     <link rel="stylesheet" href="/quill/quill.snow.css">
     <link rel="stylesheet" href="style.css">
     
@@ -79,20 +76,21 @@
                         </svg>
                     </div>
                 </div>
-                <div id="image-drop" class="unavailable">
+                <label id="image-drop" class="unavailable">
                     <svg class="placeholder" viewBox="0 0 24 24" stroke-width="0">
                         <path xmlns="http://www.w3.org/2000/svg"
                               d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/>
                         <circle xmlns="http://www.w3.org/2000/svg" cx="8" cy="8.5" r="1.5"/>
                     </svg>
-                    <svg viewBox="0 0 24 24">
+                    <svg class="upload" viewBox="0 0 24 24">
                         <rect xmlns="http://www.w3.org/2000/svg" x="4" y="4" width="16" height="2" rx="1" ry="1" transform="rotate(180 12 5)"/>
                         <rect xmlns="http://www.w3.org/2000/svg" x="17" y="5" width="4" height="2" rx="1" ry="1" transform="rotate(90 19 6)"/>
                         <rect xmlns="http://www.w3.org/2000/svg" x="3" y="5" width="4" height="2" rx="1" ry="1" transform="rotate(90 5 6)"/>
                         <path xmlns="http://www.w3.org/2000/svg" d="M8 14a1 1 0 0 1-.8-.4 1 1 0 0 1 .2-1.4l4-3a1 1 0 0 1 1.18 0l4 2.82a1 1 0 0 1 .24 1.39 1 1 0 0 1-1.4.24L12 11.24 8.6 13.8a1 1 0 0 1-.6.2z"/>
                         <path xmlns="http://www.w3.org/2000/svg" d="M12 21a1 1 0 0 1-1-1v-8a1 1 0 0 1 2 0v8a1 1 0 0 1-1 1z"/>
                     </svg>
-                </div>
+                    <input id="file-upload" type="file" accept="image/svg+xml" disabled/>
+                </label>
             </div>
             <div class="standalone-container unavailable">
                 <svg class="placeholder" viewBox="0 0 24 24" stroke-width="0">
