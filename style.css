@@ -1,3 +1,10 @@
+@import "/stylesheets/components/addSections.css";
+@import "/stylesheets/components/alignment.css";
+@import "/stylesheets/components/imageDrop.css";
+@import "/stylesheets/components/placeholder.css";
+@import "/stylesheets/components/preview.css";
+@import "/stylesheets/components/quill.css";
+@import "/stylesheets/components/section.css";
 body {
   margin: 0;
   padding: 0;
@@ -18,13 +25,6 @@ body {
   border-right: 1.5px solid #000D3B;
   background-color: #000D3B;
 }
-#grid-container #editor-container .placeholder {
-  display: none;
-  height: 20px;
-  padding: 4px;
-  fill: #FFFFFF;
-  stroke: #FFFFFF;
-}
 #grid-container #editor-container .row {
   display: flex;
   align-items: center;
@@ -33,75 +33,6 @@ body {
   width: 100%;
   max-width: 720px;
   margin-top: 24px;
-}
-#grid-container #editor-container .row #alignment {
-  width: 50%;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border: 1.5px solid #000D3B;
-  border-radius: 10px;
-  background-color: white;
-}
-#grid-container #editor-container .row #alignment svg:not(.placeholder) {
-  width: 36px;
-  padding: 2px 4px;
-  fill: #000D3B;
-  stroke: #000D3B;
-  border: 1.5px solid #000D3B;
-  border-radius: 4px;
-  cursor: pointer;
-}
-#grid-container #editor-container .row #alignment svg:not(.placeholder):hover {
-  fill: #d3d3d3;
-  stroke: #d3d3d3;
-  border-color: #d3d3d3;
-}
-#grid-container #editor-container .row #alignment #center-alignment svg {
-  width: 18px;
-}
-#grid-container #editor-container .row #image-drop {
-  width: 50%;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1.5px solid #000D3B;
-  border-radius: 10px;
-  background-color: white;
-}
-#grid-container #editor-container .row #image-drop svg:not(.placeholder) {
-  width: 24px;
-  height: 36px;
-  fill: #000D3B;
-}
-#grid-container #editor-container .standalone-container {
-  width: 100%;
-  border-color: #000D3B;
-}
-#grid-container #editor-container .standalone-container .placeholder {
-  display: none;
-  text-align: center;
-  padding-left: 0;
-  padding-right: 0;
-  width: 100%;
-  margin-top: 182.5px;
-  margin-bottom: 182.5px;
-}
-#grid-container #editor-container .unavailable {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000D3B !important;
-}
-#grid-container #editor-container .unavailable .placeholder {
-  display: inline-block;
-  visibility: visible;
-}
-#grid-container #editor-container .unavailable div {
-  display: none;
 }
 #grid-container #preview-container {
   position: relative;
