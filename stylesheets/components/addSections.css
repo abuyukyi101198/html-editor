@@ -1,0 +1,22 @@
+#add-sections {
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  gap: 12px;
+  padding: 24px 12px;
+  margin-right: 36px;
+  background-color: white;
+}
+#add-sections .button {
+  height: 20px;
+  padding: 4px;
+  fill: #000D3B;
+  stroke: #000D3B;
+  cursor: pointer;
+}
+#add-sections .button:hover {
+  fill: #d3d3d3;
+  stroke: #d3d3d3;
+}
+
+/*# sourceMappingURL=addSections.css.map */

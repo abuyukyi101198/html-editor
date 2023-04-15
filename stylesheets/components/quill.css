@@ -1,13 +1,24 @@
 .standalone-container {
   margin: 50px 0;
+  width: 100%;
   max-width: 720px;
   height: max-content;
   background-color: white;
   border-radius: 10px;
+  border-color: #000D3B;
 }
 .standalone-container .ql-toolbar {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+.standalone-container .placeholder {
+  display: none;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  margin-top: 182.5px;
+  margin-bottom: 182.5px;
 }
 
 #snow-container {

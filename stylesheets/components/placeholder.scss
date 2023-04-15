@@ -1,0 +1,24 @@
+.placeholder {
+  display: none;
+  height: 20px;
+  padding: 4px;
+  fill: #FFFFFF;
+  stroke: #FFFFFF;
+}
+
+.unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default !important;
+
+  .placeholder {
+    display: inline-block !important;
+  }
+
+  div, svg {
+    display: none;
+  }
+
+  background-color: #000D3B !important;
+}

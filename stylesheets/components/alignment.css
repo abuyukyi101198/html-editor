@@ -1,0 +1,30 @@
+#alignment {
+  width: 50%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1.5px solid #000D3B;
+  border-radius: 10px;
+  background-color: white;
+}
+#alignment svg:not(.placeholder) {
+  width: 36px;
+  padding: 2px 4px;
+  fill: #000D3B;
+  stroke: #000D3B;
+  border: 1.5px solid #000D3B;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#alignment svg:not(.placeholder):hover {
+  fill: #d3d3d3;
+  stroke: #d3d3d3;
+  border-color: #d3d3d3;
+}
+#alignment #center-alignment svg {
+  width: 18px;
+}
+
+/*# sourceMappingURL=alignment.css.map */
