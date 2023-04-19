@@ -17,7 +17,8 @@ function handleSectionAdd(button) {
     const content = document.createElement('div');
     content.setAttribute('class', 'content');
 
-    if (section.getAttribute('data-type') === 'textimage') {
+    if (section.getAttribute('data-type') === 'textimage'
+        || section.getAttribute('data-type') === 'textvideo') {
         section.setAttribute('data-alignment', 'left-alignment');
         content.innerHTML += sectionHTMLs[button.getAttribute('id')]['left'];
     }
@@ -61,12 +62,16 @@ function setSelect(section) {
         const alignment = document.querySelector('#alignment');
         const imageDrop = document.querySelector('#image-drop');
         const textEditor = document.querySelector('.standalone-container');
+        const urlEditor = document.querySelector('#url');
         const imageInput = imageDrop.querySelector('input');
+        const urlInput = urlEditor.querySelector('input');
 
         alignment.classList.add('unavailable');
         imageDrop.classList.add('unavailable');
         textEditor.classList.add('unavailable');
         imageInput.setAttribute('disabled', '');
+        urlEditor.classList.add('unavailable');
+        urlInput.setAttribute('disabled', '');
     });
 }
 
@@ -104,8 +109,10 @@ function fillEditorContainer(section) {
     const alignment = document.querySelector('#alignment');
     const imageDrop = document.querySelector('#image-drop');
     const textEditor = document.querySelector('.standalone-container');
+    const urlEditor = document.querySelector('#url');
 
     const imageInput = imageDrop.querySelector('input');
+    const urlInput = urlEditor.querySelector('input');
 
     if (sectionType === 'header' || sectionType === 'footer') {
         setFields([true, true, true, true]);
@@ -115,13 +122,27 @@ function fillEditorContainer(section) {
         fillTextEditor(section);
     }
     else if (sectionType === 'textimage') {
-        setFields([false, false, false, false]);
+        setFields([false, false, false, true]);
         fillTextEditor(section);
         fillImageDrop(imageDrop, section);
     }
     else if (sectionType === 'image') {
-        setFields([true, false, true, false]);
+        setFields([true, false, true, true]);
         fillImageDrop(imageDrop, section);
+    }
+    else if (sectionType === 'textvideo') {
+        setFields([false, true, false, false]);
+        fillTextEditor(section);
+        fillURLInput(urlInput, section);
+    }
+    else if (sectionType === 'video') {
+        setFields([true, true, true, false]);
+        fillURLInput(urlInput, section);
+    }
+    else if (sectionType === 'button') {
+        setFields([true, true, false, false]);
+        fillTextEditor(section);
+        fillURLInput(urlInput, section);
     }
 
     function setFields(fieldParams) {
@@ -130,20 +151,29 @@ function fillEditorContainer(section) {
         else
             alignment.classList.remove('unavailable');
 
-        if (fieldParams[1])
+        if (fieldParams[1]) {
             imageDrop.classList.add('unavailable');
-        else
+            imageInput.setAttribute('disabled', '');
+        }
+        else {
             imageDrop.classList.remove('unavailable');
+            imageInput.removeAttribute('disabled');
+        }
 
         if (fieldParams[2])
             textEditor.classList.add('unavailable');
         else
             textEditor.classList.remove('unavailable');
 
-        if (fieldParams[3])
-            imageInput.setAttribute('disabled', '');
-        else
-            imageInput.removeAttribute('disabled');
+        if (fieldParams[3]) {
+            urlEditor.classList.add('unavailable');
+            urlInput.setAttribute('disabled', '');
+        }
+        else {
+            urlEditor.classList.remove('unavailable');
+            urlInput.removeAttribute('disabled');
+        }
+
     }
 }
 
@@ -172,4 +202,8 @@ function fillImageDrop(imageDrop, section) {
 
     imageDrop.appendChild(svg);
     imageDrop.setAttribute('data-preview', true);
+}
+
+function fillURLInput(urlInput, section) {
+    urlInput.value = section.querySelector('a').getAttribute('href');
 }
