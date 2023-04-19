@@ -107,41 +107,41 @@ function fillEditorContainer(section) {
     const sectionType = section.getAttribute('data-type');
 
     const alignment = document.querySelector('#alignment');
-    const imageDrop = document.querySelector('#image-drop');
     const textEditor = document.querySelector('.standalone-container');
     const urlEditor = document.querySelector('#url');
 
-    const imageInput = imageDrop.querySelector('input');
     const urlInput = urlEditor.querySelector('input');
 
-    if (sectionType === 'header' || sectionType === 'footer') {
-        setFields([true, true, true, true]);
+    if (sectionType === 'header') {
+        setFields([true, true, true]);
     }
     else if (sectionType === 'text') {
-        setFields([true, true, false, true]);
+        setFields([true, false, true]);
         fillTextEditor(section);
     }
     else if (sectionType === 'textimage') {
-        setFields([false, false, false, true]);
+        setFields([false, false, false]);
         fillTextEditor(section);
-        fillImageDrop(imageDrop, section);
     }
     else if (sectionType === 'image') {
-        setFields([true, false, true, true]);
-        fillImageDrop(imageDrop, section);
+        setFields([true, true, false]);
     }
     else if (sectionType === 'textvideo') {
-        setFields([false, true, false, false]);
+        setFields([false, false, false]);
         fillTextEditor(section);
         fillURLInput(urlInput, section);
     }
     else if (sectionType === 'video') {
-        setFields([true, true, true, false]);
+        setFields([true, true, false]);
         fillURLInput(urlInput, section);
     }
     else if (sectionType === 'button') {
-        setFields([true, true, false, false]);
+        setFields([true, false, false]);
         fillTextEditor(section);
+        fillURLInput(urlInput, section);
+    }
+    else if (sectionType === 'footer') {
+        setFields([true, true, false]);
         fillURLInput(urlInput, section);
     }
 
@@ -151,21 +151,12 @@ function fillEditorContainer(section) {
         else
             alignment.classList.remove('unavailable');
 
-        if (fieldParams[1]) {
-            imageDrop.classList.add('unavailable');
-            imageInput.setAttribute('disabled', '');
-        }
-        else {
-            imageDrop.classList.remove('unavailable');
-            imageInput.removeAttribute('disabled');
-        }
-
-        if (fieldParams[2])
+        if (fieldParams[1])
             textEditor.classList.add('unavailable');
         else
             textEditor.classList.remove('unavailable');
 
-        if (fieldParams[3]) {
+        if (fieldParams[2]) {
             urlEditor.classList.add('unavailable');
             urlInput.setAttribute('disabled', '');
         }
@@ -186,24 +177,11 @@ function fillTextEditor(section) {
     quill.setContents(delta, 'silent');
 }
 
-function fillImageDrop(imageDrop, section) {
-    let svg = section.querySelector('.image-td svg');
-
-    if (!svg) return;
-
-    svg = svg.cloneNode(true);
-    svg.style.setProperty('margin-top', '0');
-    svg.style.setProperty('height', '80%');
-    svg.style.setProperty('width', '85%');
-
-    if (imageDrop.getAttribute('data-preview')) {
-        imageDrop.lastChild.remove();
-    }
-
-    imageDrop.appendChild(svg);
-    imageDrop.setAttribute('data-preview', true);
-}
-
 function fillURLInput(urlInput, section) {
-    urlInput.value = section.querySelector('a').getAttribute('href');
+    if (section.getAttribute('data-type') === 'footer') {
+        urlInput.value = section.querySelector('.address a').getAttribute('href').split(':')[1];
+    }
+    else {
+        urlInput.value = section.querySelector('a').getAttribute('href');
+    }
 }
