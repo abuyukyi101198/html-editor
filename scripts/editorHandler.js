@@ -14,12 +14,6 @@ let quill;
     const alignmentButtons = document.querySelectorAll('#alignment div');
     alignmentButtons.forEach(btn => btn.addEventListener('click', () => handleAlignment(btn)));
 
-    const imageInput = document.querySelector('#image-drop input');
-    imageInput.addEventListener('change', (e) => {
-        handleImageInput(e);
-        imageInput.value = null;
-    });
-
     const urlInput = document.querySelector('#url-link');
     urlInput.addEventListener('change', handleURL);
 })();
@@ -37,36 +31,19 @@ function handleAlignment(btn) {
     content.querySelector('.image-td').innerHTML = image;
 }
 
-function handleImageInput(e) {
-    const file = e.target.files[0];
-
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.readAsText(file, 'UTF-8');
-
-    reader.addEventListener('load', handleFile);
-    reader.addEventListener('error', () => console.log("Error reading file"));
-}
-
-function handleFile(e) {
-    const activeImage = document.querySelector('.active .image-td');
-    const styleAttr = activeImage.getAttribute('style');
-
-    activeImage.innerHTML = e.target.result;
-
-    activeImage.children[0].setAttribute('style', styleAttr);
-    activeImage.children[0].removeAttribute('width');
-    activeImage.children[0].removeAttribute('height');
-
-    const imageDrop = document.querySelector('#image-drop');
-    const section = document.querySelector('.active');
-    fillImageDrop(imageDrop, section);
-}
-
 function handleURL(e) {
     const active = document.querySelector('.active');
-    const activeURLField = active.querySelector('a');
+    let activeURLField;
+
+    if (active.getAttribute('data-type') === 'footer') {
+        activeURLField = active.querySelector('.address a');
+        activeURLField.setAttribute('href', `mailto:${e.target.value}`);
+        activeURLField.innerText = e.target.value;
+
+        return;
+    }
+
+    activeURLField = active.querySelector('a');
     activeURLField.setAttribute('href', e.target.value);
 
     if (active.getAttribute('data-type') === 'textvideo'
