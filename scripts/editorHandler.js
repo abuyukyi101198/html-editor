@@ -19,15 +19,19 @@ let quill;
         handleImageInput(e);
         imageInput.value = null;
     });
+
+    const urlInput = document.querySelector('#url-link');
+    urlInput.addEventListener('change', handleURL);
 })();
 
 function handleAlignment(btn) {
     const content = document.querySelector('.active .content');
+    const sectionType = content.parentElement.getAttribute('data-type');
 
     const text = content.querySelector('.text-td').innerHTML;
     const image = content.querySelector('.image-td').innerHTML;
 
-    content.innerHTML = sectionHTMLs['textimage'][btn.getAttribute('id').split('-')[0]];
+    content.innerHTML = sectionHTMLs[sectionType][btn.getAttribute('id').split('-')[0]];
 
     content.querySelector('.text-td').innerHTML = text;
     content.querySelector('.image-td').innerHTML = image;
@@ -58,4 +62,22 @@ function handleFile(e) {
     const imageDrop = document.querySelector('#image-drop');
     const section = document.querySelector('.active');
     fillImageDrop(imageDrop, section);
+}
+
+function handleURL(e) {
+    const active = document.querySelector('.active');
+    const activeURLField = active.querySelector('a');
+    activeURLField.setAttribute('href', e.target.value);
+
+    if (active.getAttribute('data-type') === 'textvideo'
+        || active.getAttribute('data-type') === 'video') {
+        const url = new URL(e.target.value);
+        const params = new URLSearchParams(url.search);
+        const videoId = params.get('v');
+
+        const thumbnailSrc = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+        const thumbnail = active.querySelector('img');
+        thumbnail.setAttribute('src', thumbnailSrc);
+    }
 }
