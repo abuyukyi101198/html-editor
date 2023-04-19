@@ -1,13 +1,8 @@
-@import "/stylesheets/components/addSections.css";
-@import "/stylesheets/components/alignment.css";
-@import "/stylesheets/components/imageDrop.css";
-@import "/stylesheets/components/placeholder.css";
-@import "/stylesheets/components/preview.css";
-@import "/stylesheets/components/quill.css";
-@import "/stylesheets/components/section.css";
 body {
   margin: 0;
   padding: 0;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  font-size: 0.75rem;
 }
 
 #grid-container {
@@ -21,9 +16,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-right: 1.5px solid #000D3B;
   background-color: #000D3B;
+}
+#grid-container #editor-container #save {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  padding-top: 24px;
+}
+#grid-container #editor-container #save .button {
+  margin-top: -5px;
+  height: 20px;
+  padding: 4px;
+  fill: #ffffff;
+  stroke: #ffffff;
+  cursor: pointer;
+}
+#grid-container #editor-container #save:hover {
+  color: #d3d3d3;
+}
+#grid-container #editor-container #save:hover .button {
+  fill: #d3d3d3;
+  stroke: #d3d3d3;
 }
 #grid-container #editor-container .row {
   display: flex;
@@ -43,6 +60,195 @@ body {
   height: 100%;
   margin: 0 0 0 12px;
   scroll-behavior: smooth;
+}
+
+#add-sections {
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  gap: 12px;
+  padding: 24px 12px;
+  margin-right: 36px;
+  background-color: white;
+}
+#add-sections .button {
+  height: 20px;
+  padding: 4px;
+  fill: #000D3B;
+  stroke: #000D3B;
+  cursor: pointer;
+}
+#add-sections .button:hover {
+  fill: #d3d3d3;
+  stroke: #d3d3d3;
+}
+
+#alignment {
+  width: 50%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1.5px solid #000D3B;
+  border-radius: 10px;
+  background-color: white;
+}
+#alignment svg:not(.placeholder) {
+  width: 36px;
+  padding: 2px 4px;
+  fill: #000D3B;
+  stroke: #000D3B;
+  border: 1.5px solid #000D3B;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#alignment svg:not(.placeholder):hover {
+  fill: #d3d3d3;
+  stroke: #d3d3d3;
+  border-color: #d3d3d3;
+}
+#alignment #center-alignment svg {
+  width: 18px;
+}
+
+#image-drop {
+  width: 50%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #000D3B;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+#image-drop .upload {
+  width: 24px;
+  height: 36px;
+  fill: #000D3B;
+}
+#image-drop input[type=file] {
+  display: none;
+}
+
+.placeholder {
+  display: none;
+  height: 20px;
+  padding: 4px;
+  fill: #FFFFFF;
+  stroke: #FFFFFF;
+}
+
+.unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default !important;
+  background-color: #000D3B !important;
+}
+.unavailable .placeholder {
+  display: inline-block !important;
+}
+.unavailable div, .unavailable svg, .unavailable input {
+  display: none;
+}
+
+#preview {
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin-top: 72px;
+  margin-bottom: 0;
+  overflow-y: scroll;
+}
+
+.standalone-container {
+  margin: 50px 0;
+  width: 100%;
+  max-width: 720px;
+  height: max-content;
+  background-color: white;
+  border-radius: 10px;
+  border-color: #000D3B;
+}
+.standalone-container .ql-toolbar {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.standalone-container .placeholder {
+  display: none;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  margin-top: 157.5px;
+  margin-bottom: 157.5px;
+}
+
+#snow-container {
+  height: 300px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: max-content;
+}
+.section:is(.dragging) {
+  opacity: 0;
+}
+.section .control {
+  visibility: hidden;
+  width: 20px;
+  height: 40px;
+  margin: 4px 36px 4px 0;
+  fill: #000D3B;
+  cursor: pointer;
+}
+.section .control:hover {
+  fill: #d3d3d3;
+}
+.section .drag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4px 0;
+}
+.section .drag .up, .section .drag .down {
+  visibility: visible;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+}
+.section .content {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  margin: 0 12px;
+}
+
+#url {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 720px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: white;
+}
+#url input {
+  border: none;
+  user-select: none;
 }
 
 /*# sourceMappingURL=style.css.map */
