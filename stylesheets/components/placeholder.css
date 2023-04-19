@@ -16,7 +16,7 @@
 .unavailable .placeholder {
   display: inline-block !important;
 }
-.unavailable div, .unavailable svg {
+.unavailable div, .unavailable svg, .unavailable input {
   display: none;
 }
 
