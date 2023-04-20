@@ -1,9 +1,9 @@
-(function () {
+function setupSections() {
     const sections = document.querySelectorAll('#add-sections .button');
     sections.forEach(btn => {
         btn.addEventListener('click', () => handleSectionAdd(btn));
     })
-})();
+}
 
 function handleSectionAdd(button) {
     const preview = document.querySelector('#preview');
