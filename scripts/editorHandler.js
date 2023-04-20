@@ -33,21 +33,17 @@ function handleAlignment(btn) {
 
 function handleURL(e) {
     const active = document.querySelector('.active');
+    const sectionType = active.getAttribute('data-type');
     let activeURLField;
 
-    if (active.getAttribute('data-type') === 'footer') {
-        activeURLField = active.querySelector('.address a');
-        activeURLField.setAttribute('href', `mailto:${e.target.value}`);
-        activeURLField.innerText = e.target.value;
-
-        return;
+    if (sectionType === 'textimage' || sectionType === 'image') {
+        activeURLField = active.querySelector('img');
+        activeURLField.setAttribute('src', e.target.value);
     }
+    else if (sectionType === 'textvideo' || sectionType === 'video') {
+        activeURLField = active.querySelector('a');
+        activeURLField.setAttribute('href', e.target.value);
 
-    activeURLField = active.querySelector('a');
-    activeURLField.setAttribute('href', e.target.value);
-
-    if (active.getAttribute('data-type') === 'textvideo'
-        || active.getAttribute('data-type') === 'video') {
         const url = new URL(e.target.value);
         const params = new URLSearchParams(url.search);
         const videoId = params.get('v');
@@ -56,5 +52,14 @@ function handleURL(e) {
 
         const thumbnail = active.querySelector('img');
         thumbnail.setAttribute('src', thumbnailSrc);
+    }
+    else if (sectionType === 'button') {
+        activeURLField = active.querySelector('a');
+        activeURLField.setAttribute('href', e.target.value);
+    }
+    else if (sectionType === 'footer') {
+        activeURLField = active.querySelector('.address a');
+        activeURLField.setAttribute('href', `mailto:${e.target.value}`);
+        activeURLField.innerText = e.target.value;
     }
 }
