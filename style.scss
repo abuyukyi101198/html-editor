@@ -140,30 +140,6 @@ body {
   }
 }
 
-#image-drop {
-  width: 50%;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1.5px solid #000D3B;
-  border-radius: 10px;
-
-  background-color: white;
-  cursor: pointer;
-
-  .upload {
-    width: 24px;
-    height: 36px;
-    fill: #000D3B;
-  }
-
-  input[type="file"] {
-    display: none;
-  }
-}
-
 .placeholder {
   display: none;
   height: 20px;
