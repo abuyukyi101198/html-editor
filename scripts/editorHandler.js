@@ -1,6 +1,6 @@
 let quill;
 
-(function () {
+function setupEditor() {
     quill = new Quill('#snow-container', {
         placeholder: 'Write here...',
         theme: 'snow'
@@ -16,19 +16,23 @@ let quill;
 
     const urlInput = document.querySelector('#url-link');
     urlInput.addEventListener('change', handleURL);
-})();
+}
 
 function handleAlignment(btn) {
+    const active = document.querySelector('.active');
     const content = document.querySelector('.active .content');
-    const sectionType = content.parentElement.getAttribute('data-type');
+    const sectionType = active.getAttribute('data-type');
+    const newAlignment = btn.getAttribute('id').split('-')[0];
 
     const text = content.querySelector('.text-td').innerHTML;
     const image = content.querySelector('.image-td').innerHTML;
 
-    content.innerHTML = sectionHTMLs[sectionType][btn.getAttribute('id').split('-')[0]];
+    content.innerHTML = sectionHTMLs[sectionType][newAlignment];
 
     content.querySelector('.text-td').innerHTML = text;
     content.querySelector('.image-td').innerHTML = image;
+
+    active.setAttribute('data-alignment', `${newAlignment}-alignment`);
 }
 
 function handleURL(e) {
