@@ -31,3 +31,13 @@ function setupSave() {
     })
 }
 
+function setupEmail(emailHTML) {
+    const emailDoc = new DOMParser().parseFromString(emailHTML, "text/xml");
+    const sections = emailDoc.querySelectorAll('table');
+
+    sections.forEach(section => {
+        const btn = document.querySelector(`#${section.getAttribute('data-section')}`);
+
+    });
+}
+
