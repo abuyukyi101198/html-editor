@@ -4,9 +4,13 @@ let sectionHTMLs;
 
 fetch('./editor.json')
     .then((response) => response.json())
-    .then((json) => main(json));
+    .then((json) => {
+        fetch('./email.txt')
+            .then((response) => response.text())
+            .then((email) => main(json, email))
+    });
 
-function main(json) {
+function main(json, email) {
     headHTML = json["headHTML"];
     style = json["style"];
     sectionHTMLs = json["sectionHTMLs"];
@@ -14,4 +18,5 @@ function main(json) {
     setupSave();
     setupSections();
     setupEditor();
+    setupEmail(email);
 }
