@@ -1,5 +1,26 @@
 let quill;
 
+function handleSave() {
+    const contents = document.querySelectorAll('.content');
+    let email = document.implementation.createHTMLDocument('');
+
+    const head = email.querySelector('head');
+    head.innerHTML = headHTML;
+    const styleElem = email.createElement('style');
+    styleElem.innerHTML = style;
+    head.appendChild(styleElem);
+
+    const body = email.querySelector('body');
+    const container = email.createElement('div');
+    container.setAttribute('class', 'content');
+    body.appendChild(container);
+    for (const content of contents) {
+        container.appendChild(content.children[0].cloneNode(true));
+    }
+
+    navigator.clipboard.writeText(new XMLSerializer().serializeToString(email));
+}
+
 function handleAlignment(btn) {
     const active = document.querySelector('.active');
     const content = document.querySelector('.active .content');
