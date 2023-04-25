@@ -144,13 +144,14 @@
             </tr>
             </tbody>
         </table>
-        <table data-section="textimage-left" role="presentation" border="0" cellspacing="0" width="75%">
+        <table data-section="button" style="margin-top: 12px" role="presentation" border="0" cellspacing="0"
+               width="75%">
             <tbody>
             <tr>
-                <td class="text-td" style="width: 50%"></td>
-                <td class="image-td" style="text-align: right; padding-left: 20px"><img
-                        style="width: 85%; margin-top: 10%"
-                        src="https://www.ye-ro.com/wp-content/uploads/2016/10/logo.png" alt="logo"/></td>
+                <td style="text-align: center">
+                    <div class="button"><a class="text-td button" href="" disable-tracking="true"><p>Download</p></a>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>
