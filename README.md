@@ -52,3 +52,9 @@ There exists **8** section types which can be used in your e-mail.
 6. Video
 7. Button
 8. Footer
+
+Sections are added by clicking on their respective icons at the top of the preview (right half of the page). Once a
+section is added, it can be selected by clicking, at which point there will appear arrow and trash icons. Arrows let the
+user move the section up or down the e-mail, and the trash icon deletes the section.
+
+Once a section is selected, its contents can be edited in the editor (left half of the page).
