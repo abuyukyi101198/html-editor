@@ -58,3 +58,14 @@ section is added, it can be selected by clicking, at which point there will appe
 user move the section up or down the e-mail, and the trash icon deletes the section.
 
 Once a section is selected, its contents can be edited in the editor (left half of the page).
+
+#### Editor
+
+Each section has predetermined editable properties. Double-column sections (i.e. Text & Image and Text & Video) have an
+editable Alignment property. They can be aligned as the text section being on the left, right, and below the
+image/video.
+
+The also exists a URL property. In sections that contain images, the URL property acts as the source URL of the image
+being displayed. In sections with videos, the URL accepts the YouTube link of the video, from which the thumbnail is
+automatically taken and used as a clickable image. For the Button section the URL property specifies the button link,
+and for the Footer section the link specifies the e-mail being displayed on the footer, which recipients can reply to.
