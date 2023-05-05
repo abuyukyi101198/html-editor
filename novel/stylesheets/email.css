@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500;700&display=swap");
 .content {
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto;
   background-color: #FFFFFF;
   font-family: "Prompt", Geneva, sans-serif;
   font-size: 0.55rem;
