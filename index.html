@@ -516,7 +516,7 @@
                 container.appendChild(content.children[0].cloneNode(true));
             }
             
-            FileMaker.PerformScript("Set Parameter", new XMLSerializer().serializeToString(email));
+            navigator.clipboard.writeText(new XMLSerializer().serializeToString(email));
         }
 
         function handleAlignment(btn) {
