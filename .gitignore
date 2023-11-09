@@ -5,3 +5,5 @@ test.html
 email.txt
 
 *.map
+
+.DS_Store
